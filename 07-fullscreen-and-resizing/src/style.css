@@ -1,0 +1,11 @@
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  padding: 0;
+}
+
+.webgl {
+  outline: none;
+}
