@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import GSAP from 'gsap'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -14,8 +15,8 @@ scene.add(mesh)
 
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+  width: 800,
+  height: 600
 }
 
 // Camera
@@ -25,7 +26,19 @@ scene.add(camera)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+  canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
+
+GSAP.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+
+// Animations
+const tick = () => {
+  // Render
+  renderer.render(scene, camera)
+
+  window.requestAnimationFrame(tick)
+}
+
+tick()
